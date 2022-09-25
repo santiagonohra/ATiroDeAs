@@ -3,10 +3,13 @@ package Services;
 import Model.Producto;
 import com.example.certificacionciclo4a.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductoServices {
@@ -17,8 +20,10 @@ public class ProductoServices {
         return productoRepository.findAll();
     }
 
-    public Producto getProductoById(String id){
-        return productoRepository.findById(id).get();
+    public ResponseEntity<?> getProductoById(String id){
+        Optional<Producto> producto = productoRepository.findById(id);
+        return producto.map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     public List<Producto> getProductosMenorPrecio(int precio){

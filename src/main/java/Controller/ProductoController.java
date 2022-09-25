@@ -4,6 +4,7 @@ import Model.Producto;
 import Services.ProductoServices;
 import com.example.certificacionciclo4a.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,28 +18,26 @@ public class ProductoController {
 
     @GetMapping("/all")
     public List<Producto> getProductos(){
-        System.out.println("Peticion recibida en /all");
         return productoServices.getProductos();
     }
 
-    @GetMapping("/")
-    public Producto getProductoById(@RequestParam String id){
-        System.out.println("Peticion recibida en /id=?");
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getProductoById(@PathVariable String id){
         return productoServices.getProductoById(id);
     }
 
-    @GetMapping("/ltPrice")
-    public List<Producto> getProductosMenorPrecio(@RequestParam int precio){
+    @GetMapping("/ltPrice/{precio}")
+    public List<Producto> getProductosMenorPrecio(@PathVariable int precio){
         return productoServices.getProductosMenorPrecio(precio);
     }
 
-    @GetMapping("/category")
-    public List<Producto> getProductoCategoria(@RequestParam String categoria){
+    @GetMapping("/category/{categoria}")
+    public List<Producto> getProductoCategoria(@PathVariable String categoria){
         return productoServices.getProductoCategoria(categoria);
     }
 
-    @GetMapping("/search")
-    public List<Producto> getProductosConNombre(@RequestParam String nombre){
+    @GetMapping("/search/{nombre}")
+    public List<Producto> getProductosConNombre(@PathVariable String nombre){
         return productoServices.getProductosConNombre(nombre);
     }
 
@@ -49,17 +48,16 @@ public class ProductoController {
 
     @PostMapping("/save")
     public Producto saveProducto(@RequestBody Producto producto){
-        System.out.println("Peticion recibida en /save");
         return productoServices.saveProducto(producto);
     }
 
-    @PutMapping("/update")
+    @PutMapping("/{id}")
     public Producto updateProducto(@RequestBody Producto producto){
         return productoServices.updateProducto(producto);
     }
 
-    @DeleteMapping("/delete")
-    public void deleteProducto(@RequestParam String id){
+    @DeleteMapping("/{id}")
+    public void deleteProducto(@PathVariable String id){
         productoServices.deleteProducto(id);
     }
 }

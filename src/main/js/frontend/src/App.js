@@ -1,22 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import Home from './Home';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import ClientList from './ProductList';
-import ClientEdit from "./ProductoEdit";
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import GroupList from './ProductList';
+import GroupEdit from './ProductoEdit';
 
-class App extends Component {
-  render() {
+const App = () => {
     return (
         <Router>
-          <Switch>
-            <Route path='/' exact={true} component={Home}/>
-            <Route path='/api/Productos/all' exact={true} component={ClientList}/>
-            <Route path='/api/Productos/?id=:id' component={ClientEdit}/>
-          </Switch>
+            <Routes>
+                <Route exact path="/" element={<Home/>}/>
+                <Route path='/Productos/all' exact={true} element={<GroupList/>}/>
+                <Route path='/Productos/:id' element={<GroupEdit/>}/>
+            </Routes>
         </Router>
     )
-  }
 }
 
 export default App;
