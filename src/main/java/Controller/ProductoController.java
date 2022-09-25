@@ -17,7 +17,14 @@ public class ProductoController {
 
     @GetMapping("/all")
     public List<Producto> getProductos(){
+        System.out.println("Peticion recibida en /all");
         return productoServices.getProductos();
+    }
+
+    @GetMapping("/")
+    public Producto getProductoById(@RequestParam String id){
+        System.out.println("Peticion recibida en /id=?");
+        return productoServices.getProductoById(id);
     }
 
     @GetMapping("/ltPrice")
@@ -42,6 +49,7 @@ public class ProductoController {
 
     @PostMapping("/save")
     public Producto saveProducto(@RequestBody Producto producto){
+        System.out.println("Peticion recibida en /save");
         return productoServices.saveProducto(producto);
     }
 

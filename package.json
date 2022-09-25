@@ -1,0 +1,8 @@
+{
+  "name": "CertificacionCiclo4a",
+  "proxy": "http://localhost:8080/",
+  "version": "1.0.0",
+  "dependencies": {
+    "react-dom": "^18.2.0"
+  }
+}

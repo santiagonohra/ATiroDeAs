@@ -17,6 +17,10 @@ public class ProductoServices {
         return productoRepository.findAll();
     }
 
+    public Producto getProductoById(String id){
+        return productoRepository.findById(id).get();
+    }
+
     public List<Producto> getProductosMenorPrecio(int precio){
         return productoRepository.consultarPorMenorPrecio(precio);
     }
