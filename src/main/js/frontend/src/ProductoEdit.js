@@ -33,7 +33,11 @@ const ProductoEdit = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        if(producto.disponibilidad==='Si'){
+            producto.disponibilidad='true';
+        }else{
+            producto.disponibilidad='false';
+        }
         await fetch('/api/Productos' + (producto.id ? '/' + producto.id : '/save'), {
             method: (producto.id) ? 'PUT' : 'POST',
             headers: {

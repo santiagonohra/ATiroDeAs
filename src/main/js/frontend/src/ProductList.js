@@ -38,14 +38,22 @@ const ProductList = () => {
 
     const productList = productos.map(product =>{
         return <tr key={product.id}>
-            <td style={{whiteSpace: 'nowrap'}}>{product.nombre}</td>
-            <td>{product.precio}</td>
             <td>
                 <ButtonGroup>
                     <Button size="sm" color="primary" tag={Link} to={"/Productos/"+product.id}>Editar</Button>
+                </ButtonGroup>
+            </td>
+            <td>
+                <ButtonGroup>
                     <Button size="sm" color="danger" onClick={() => remove(product.id)}>Eliminar</Button>
                 </ButtonGroup>
             </td>
+            <td style={{whiteSpace: 'nowrap'}}>{product.nombre}</td>
+            <td>{product.categoria}</td>
+            <td>{product.descripcion}</td>
+            <td>{product.disponibilidad ? 'Si' : 'No'}</td>
+            <td>{product.precio}</td>
+            <td>{product.cantidadStock}</td>
         </tr>
     });
 
@@ -53,16 +61,22 @@ const ProductList = () => {
         <div>
             <AppNavbar/>
             <Container fluid>
+                <Button color="link"><Link to="/">Regresar</Link></Button>
                 <div className="float-end">
-                    <Button color="success" tag={Link} to="/Productos/new">Agregar Producto</Button>
+                    <Button color="success"  tag={Link} to="/Productos/new">Agregar Producto</Button>
                 </div>
-                <h3>A Tiro de As</h3>
+                <h3>Listado de Productos</h3>
                 <Table className="mt-4">
                     <thead>
                     <tr>
-                        <th width="20%">Nombre</th>
-                        <th width="20%">Precio</th>
-                        <th width="10%">Acciones</th>
+                        <th width="5%">Editar</th>
+                        <th width="5%">Eliminar</th>
+                        <th width="10%">Nombre</th>
+                        <th width="5%">Categoría</th>
+                        <th width="20%">Descripción</th>
+                        <th width="5%">Disponible</th>
+                        <th width="5%">Precio</th>
+                        <th width="5%">Stock</th>
                     </tr>
                     </thead>
                     <tbody>

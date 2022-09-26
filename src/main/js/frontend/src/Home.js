@@ -10,7 +10,14 @@ class Home extends Component {
             <div>
                 <AppNavbar/>
                 <Container fluid>
-                    <Button color="link"><Link to="/Productos/all">Ver Productos</Link></Button>
+                    <ul>
+                        <li>
+                            <Button color="link"><Link to="/Productos/all">Listado de Productos</Link></Button>
+                        </li>
+                        <li>
+                            <Button color="link"><Link to="/Productos/all">Catálogo de Productos</Link></Button>
+                        </li>
+                    </ul>
                 </Container>
             </div>
         );
