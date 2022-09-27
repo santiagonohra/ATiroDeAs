@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Button, ButtonGroup, Container, Table } from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
-import App from "./App";
 
 const ProductList = () => {
     const [productos, setProductos] = useState([]);
@@ -61,11 +60,12 @@ const ProductList = () => {
         <div>
             <AppNavbar/>
             <Container fluid>
-                <Button color="link"><Link to="/">Regresar</Link></Button>
+
                 <div className="float-end">
                     <Button color="success"  tag={Link} to="/Productos/new">Agregar Producto</Button>
                 </div>
-                <h3>Listado de Productos</h3>
+                <h2>Listado de Productos</h2>
+                <Button color="link"><Link to="/">Regresar</Link></Button>
                 <Table className="mt-4">
                     <thead>
                     <tr>

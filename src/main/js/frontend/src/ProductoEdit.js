@@ -27,17 +27,12 @@ const ProductoEdit = () => {
 
     const handleChange = (event) => {
         const {name, value} = event.target
-
         setProducto({...producto, [name]: value})
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if(producto.disponibilidad==='Si'){
-            producto.disponibilidad='true';
-        }else{
-            producto.disponibilidad='false';
-        }
+        producto.disponibilidad = producto.disponibilidad == 'No' ? 'false' : 'true';
         await fetch('/api/Productos' + (producto.id ? '/' + producto.id : '/save'), {
             method: (producto.id) ? 'PUT' : 'POST',
             headers: {
@@ -70,16 +65,16 @@ const ProductoEdit = () => {
                     <Input type="text" name="descripcion" id="descripcion" defaultValue={producto.descripcion || ''} onChange={handleChange} autoComplete="descripcion"/>
                 </FormGroup>
                 <FormGroup>
+                    <Label for="disponibilidad">Disponible</Label>
+                    <Input type="text" name="disponibilidad" id="disponibilidad" defaultValue={producto.disponibilidad ? 'Si' : '' || ''} onChange={handleChange} autoComplete="disponibilidad"/>
+                </FormGroup>
+                <FormGroup>
                     <Label for="precio">Prezio :3</Label>
                     <Input type="number" name="precio" id="precio" defaultValue={producto.precio || ''} onChange={handleChange} autoComplete="precio"/>
                 </FormGroup>
                 <FormGroup>
                     <Label for="cantidadStock">Cantidad En Stock</Label>
                     <Input type="number" name="cantidadStock" id="cantidadStock" defaultValue={producto.cantidadStock || ''} onChange={handleChange} autoComplete="cantidadStock"/>
-                </FormGroup>
-                <FormGroup>
-                    <Label for="disponibilidad">Disponibilidad</Label>
-                    <Input type="text" name="disponibilidad" id="disponibilidad" defaultValue={producto.disponibilidad || ''} onChange={handleChange} autoComplete="disponibilidad"/>
                 </FormGroup>
                 <FormGroup>
                     <Button color="primary" type="submit">Guardar</Button>{'  '}

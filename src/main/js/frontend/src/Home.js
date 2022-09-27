@@ -15,7 +15,7 @@ class Home extends Component {
                             <Button color="link"><Link to="/Productos/all">Listado de Productos</Link></Button>
                         </li>
                         <li>
-                            <Button color="link"><Link to="/Productos/all">Catálogo de Productos</Link></Button>
+                            <Button color="link"><Link to="/Productos/catalog">Catálogo de Productos</Link></Button>
                         </li>
                     </ul>
                 </Container>
