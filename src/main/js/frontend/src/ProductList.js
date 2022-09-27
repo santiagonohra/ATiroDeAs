@@ -61,10 +61,11 @@ const ProductList = () => {
             <AppNavbar/>
             <Container fluid>
 
+                <h2></h2>
+                <h2>Listado de Productos</h2>
                 <div className="float-end">
                     <Button color="success"  tag={Link} to="/Productos/new">Agregar Producto</Button>
                 </div>
-                <h2>Listado de Productos</h2>
                 <Button color="link"><Link to="/">Regresar</Link></Button>
                 <Table className="mt-4">
                     <thead>

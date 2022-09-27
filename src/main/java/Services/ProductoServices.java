@@ -26,15 +26,21 @@ public class ProductoServices {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    public List<Producto> getProductosMenorPrecio(int precio){
-        return productoRepository.consultarPorMenorPrecio(precio);
+    public ResponseEntity<?> getProductosMenorPrecio(int precio){
+        Optional<List<Producto>> lista = productoRepository.consultarPorMenorPrecio(precio);
+        return lista.map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    public List<Producto> getProductoCategoria(String categoria){
-        return productoRepository.findByCategoria(categoria);
+    public ResponseEntity<?> getProductoCategoria(String categoria){
+        Optional<List<Producto>> lista = productoRepository.findByCategoria(categoria);
+        return lista.map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    public List<Producto> getProductosConNombre(String nombre){
-        return productoRepository.findByNombre(nombre).get();
+    public ResponseEntity<?> getProductosConNombre(String nombre){
+        Optional<List<Producto>> lista = productoRepository.findByNombre(nombre);
+        return lista.map(response -> ResponseEntity.ok().body(response))
+                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     public List<Producto> getProductosDisponibles(){

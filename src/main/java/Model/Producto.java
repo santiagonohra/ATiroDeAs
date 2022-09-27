@@ -12,6 +12,10 @@ public class Producto {
     private Integer precio, cantidadStock;
     private boolean disponibilidad;
 
+    public Producto(){
+
+    }
+
     public Producto(String id, String nombre, String categoria, String descripcion, Integer precio, Integer cantidadStock, boolean disponibilidad) {
         super();
         this.id = id;

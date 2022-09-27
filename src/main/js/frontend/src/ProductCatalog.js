@@ -2,40 +2,65 @@ import React, { useEffect, useState } from 'react';
 import {Button, Container, InputGroup, Table} from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
+import {click} from "@testing-library/user-event/dist/click";
 
 const ProductCatalog = () => {
-    const [filterBy, setFilterBy] = useState('all');
+    const [filterBy, setFilterBy] = useState('');
     const [productos, setProductos] = useState([]);
     const [data, setData] = useState('');
     const [loading, setLoading] = useState(false);
-
+    const [paramType, setParamType] = useState('');
 
     const handleClick= () =>{
+
         setLoading(true);
         //consultar por precio menor
 
             fetch(`/api/Productos/${filterBy}/${data}`)
-            //fetch(`/api/Productos/search/Wilson`)
-                .then(response => response.json())
-                .then(data => {
-                    setProductos(data);
-                    setLoading(false);
-                })
+                .then(response => {
+                    if(response.ok){
+                        response.json().then(data => {
+                            setProductos(data);
+                            setLoading(false);
+                        });
+                    }else{
+                        setProductos([]);
+                        setLoading(false);
+                    }
 
+                });
+
+        setData('');
+        setFilterBy('');
     }
 
     if(loading){
         return <p>Cargando...</p>
     }
 
+
     const handleChangeFilter = (event) =>{
         const {name, value} = event.target;
         setFilterBy(value);
+        setParamType(value === 'category' || value === 'search' ? 'text' : 'number');
     }
 
     const handleChangeData = (event) => {
         const {name, value} = event.target;
         setData(value);
+    }
+
+    const handleClickAll = () => {
+        setLoading(true);
+        //consultar por precio menor
+
+        fetch(`/api/Productos/all`)
+            //fetch(`/api/Productos/search/Wilson`)
+            .then(response => response.json())
+            .then(data => {
+                setProductos(data);
+                setLoading(false);
+            });
     }
 
     const productList = productos.map(product =>{
@@ -64,8 +89,9 @@ const ProductCatalog = () => {
                     <input type="radio" value="category" name="choice" onChange={handleChangeFilter} /> Consultar por categoría &ensp; &ensp;
                     <input type="radio" value="search" name="choice" onChange={handleChangeFilter} /> Consultar por nombre &ensp; &ensp; &ensp; &ensp;
                     <div className="float-end">
-                    <input type="text" name="value" placeholder="Parámetro de búsqueda" onChange={handleChangeData}/>&ensp;
-                    <Button color="primary" onClick={handleClick}>Aceptar</Button>
+                    <input type={paramType} name="value" placeholder="Parámetro de búsqueda" onChange={handleChangeData}/>&ensp;
+                    <Button color="primary" disabled={data.length == 0 || filterBy.length == 0} onClick={handleClick}>Aceptar</Button>&ensp;
+                    <Button color="success" onClick={handleClickAll}>Mostrar Todo</Button>
                     </div>
 
                 <Table className="mt-4">

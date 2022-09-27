@@ -30,6 +30,12 @@ const ProductoEdit = () => {
         setProducto({...producto, [name]: value})
     }
 
+    const isClickable = () => {
+        return (producto.nombre.length == 0 || producto.categoria.length == 0 ||
+            producto.descripcion.length == 0 || producto.disponibilidad.length == 0 ||
+            producto.precio.length == 0 || producto.cantidadStock.length == 0);
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         producto.disponibilidad = producto.disponibilidad == 'No' ? 'false' : 'true';
@@ -77,7 +83,8 @@ const ProductoEdit = () => {
                     <Input type="number" name="cantidadStock" id="cantidadStock" defaultValue={producto.cantidadStock || ''} onChange={handleChange} autoComplete="cantidadStock"/>
                 </FormGroup>
                 <FormGroup>
-                    <Button color="primary" type="submit">Guardar</Button>{'  '}
+                    <h2></h2>
+                    <Button color="primary" type="submit" disabled={isClickable()} >Guardar</Button>{'  '}
                     <Button color="secondary" tag={Link} to="/Productos/all">Cancelar</Button>
                 </FormGroup>
             </Form>

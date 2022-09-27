@@ -12,13 +12,13 @@ public interface ProductoRepository extends MongoRepository<Producto, String> {
 
     //public List<Producto> consultarMenorPrecio(int precio);
 
-    public List<Producto> findByCategoria(String categoria);
+    public Optional<List<Producto>> findByCategoria(String categoria);
 
-    @Query("{'nombre':  {$regex: /?0/}}")
+    @Query("{'nombre':  {$regex: /?0/i}}")
     public Optional<List<Producto>> findByNombre(String nombre);
 
     @Query("{precio:  {$lte:  ?0}}")
-    public List<Producto> consultarPorMenorPrecio(int precio);
+    public Optional<List<Producto>> consultarPorMenorPrecio(int precio);
 
     @Query("{disponibilidad: true}")
     public List<Producto> consultarPorDisponibilidad();
