@@ -1,15 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import {Button, Container, InputGroup, Table} from 'reactstrap';
+import {Button, Container, Input, Table, InputGroup} from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
 import {click} from "@testing-library/user-event/dist/click";
 
 const ProductCatalog = () => {
+
     const [filterBy, setFilterBy] = useState('');
     const [productos, setProductos] = useState([]);
     const [data, setData] = useState('');
     const [loading, setLoading] = useState(false);
     const [paramType, setParamType] = useState('');
+    const [categorias1, setCategorias1] = useState([]);
+
+    useEffect(() =>{
+        setLoading(true);
+        //consultar por precio menor
+
+        fetch(`/api/Productos/all`)
+            //fetch(`/api/Productos/search/Wilson`)
+            .then(response => response.json())
+            .then(data => {
+                setProductos(data);
+                setLoading(false);
+            });
+    }, []);
 
     const handleClick= () =>{
 
@@ -42,7 +57,7 @@ const ProductCatalog = () => {
     const handleChangeFilter = (event) =>{
         const {name, value} = event.target;
         setFilterBy(value);
-        setParamType(value === 'category' || value === 'search' ? 'text' : 'number');
+        setParamType(value === 'search' ? 'text' : 'number');
     }
 
     const handleChangeData = (event) => {
@@ -75,6 +90,29 @@ const ProductCatalog = () => {
         </tr>
     });
 
+    const searchParam = () => {
+
+        let categorias = [];
+        productos.map(producto => {
+            categorias.push(producto.categoria);
+        })
+        if (filterBy === 'category') {
+            return (
+                <select name="value" className="form-select" aria-label="Default select example"
+                        onChange={handleChangeData}>
+                    <option selected>Seleccionar categoría</option>
+                    {categorias.map(categoria => {
+                        return <option value={categoria}>{categoria}</option>
+                    })}
+                </select>
+            );
+        } else {
+            return (
+                <Input type={paramType} name="value" placeholder="Parámetro de búsqueda" onChange={handleChangeData}/>
+            );
+        }
+    }
+
 
     return (
         <div>
@@ -90,9 +128,11 @@ const ProductCatalog = () => {
                     <input class="form-check-input" type="radio" value="category" name="choice" onChange={handleChangeFilter} /> Consultar por categoría &ensp; &ensp;
                     <input class="form-check-input" type="radio" value="search" name="choice" onChange={handleChangeFilter} /> Consultar por nombre &ensp; &ensp; &ensp; &ensp;
                     <div className="float-end">
-                    <input type={paramType} name="value" placeholder="Parámetro de búsqueda" onChange={handleChangeData}/>&ensp;
-                    <Button color="primary" disabled={data.length == 0 || filterBy.length == 0} onClick={handleClick}>Aceptar</Button>&ensp;
-                    <Button color="success" onClick={handleClickAll}>Mostrar Todo</Button>
+                        <InputGroup>
+                            {searchParam()}
+                        <Button color="primary" disabled={data.length == 0 || filterBy.length == 0} onClick={handleClick}>Aceptar</Button>&ensp;
+                        <Button color="success" onClick={handleClickAll}>Mostrar Todo</Button>
+                        </InputGroup>
                     </div>
 
                 <Table className="mt-4">

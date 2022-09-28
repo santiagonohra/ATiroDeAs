@@ -60,28 +60,32 @@ const ProductoEdit = () => {
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
                     <Label for="nombre">Nombre</Label>
-                    <Input type="text" name="nombre" id="nombre" defaultValue={producto.nombre || ''} onChange={handleChange} autoComplete="nombre"/>
+                    <Input type="text" name="nombre" id="nombre" defaultValue={producto.nombre || ''} onChange={handleChange} autoComplete="nombre" placeholder="Wilson..."/>
                 </FormGroup>
                 <FormGroup>
                     <Label for="categoria">Categoria</Label>
-                    <Input type="text" name="categoria" id="categoria" defaultValue={producto.categoria || ''} onChange={handleChange} autoComplete="categoria"/>
+                    <Input type="text" name="categoria" id="categoria" defaultValue={producto.categoria || ''} onChange={handleChange} autoComplete="categoria" placeholder="Raqueta..."/>
                 </FormGroup>
                 <FormGroup>
                     <Label for="descripcion">Descripcion</Label>
-                    <Input type="text" name="descripcion" id="descripcion" defaultValue={producto.descripcion || ''} onChange={handleChange} autoComplete="descripcion"/>
+                    <Input type="text" name="descripcion" id="descripcion" defaultValue={producto.descripcion || ''} onChange={handleChange} autoComplete="descripcion" placeholder="Raqueta wilson de 220 gramos..."/>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="disponibilidad">Disponible</Label>
-                    <input class="form-check-input" type="radio" value="Si" name="disponibilidad" id="disponibilidad" onChange={handleChange} /> Sí &ensp; &ensp;
-                    <input class="form-check-input" type="radio" value="No" name="disponibilidad" id="disponibilidad" onChange={handleChange} /> No &ensp; &ensp;                    
+                    <Label for="disponibilidad">Disponible</Label><br></br>
+                    <Input class="form-check-input" type="radio" value="Si" name="disponibilidad" id="disponibilidad" onChange={handleChange} /> Sí &ensp; &ensp;
+                    <Input class="form-check-input" type="radio" value="No" name="disponibilidad" id="disponibilidad" onChange={handleChange} /> No &ensp; &ensp;
                 </FormGroup>
                 <FormGroup>
                     <Label for="precio">Precio</Label>
-                    <Input type="number" name="precio" id="precio" defaultValue={producto.precio || ''} onChange={handleChange} autoComplete="precio"/>
+                    <Input type="number" name="precio" id="precio" defaultValue={producto.precio || ''} onChange={handleChange} autoComplete="precio" placeholder="$120000..."/>
                 </FormGroup>
                 <FormGroup>
                     <Label for="cantidadStock">Cantidad En Stock</Label>
-                    <Input type="number" name="cantidadStock" id="cantidadStock" defaultValue={producto.cantidadStock || ''} onChange={handleChange} autoComplete="cantidadStock"/>
+                    <Input type="number" name="cantidadStock" id="cantidadStock" defaultValue={producto.cantidadStock || ''} onChange={handleChange} autoComplete="cantidadStock" placeholder="10..."/>
+                </FormGroup>
+                <FormGroup>
+                    <Label for="url">URL de la Imágen</Label>
+                    <Input type="text" name="url" id="url" defaultValue={producto.url || ''} placeholder="url.com/a/b/c.jpeg" onChange={handleChange} autoComplete="url"/>
                 </FormGroup>
                 <FormGroup>
                     <h2></h2>
