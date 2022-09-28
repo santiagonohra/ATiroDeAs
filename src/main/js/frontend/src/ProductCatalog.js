@@ -65,12 +65,12 @@ const ProductCatalog = () => {
 
     const productList = productos.map(product =>{
         return <tr key={product.id}>
-            <td style={{whiteSpace: 'nowrap'}}>{product.nombre}</td>
-            <td>{product.categoria}</td>
-            <td>{product.descripcion}</td>
-            <td>{product.disponibilidad ? 'Si' : 'No'}</td>
-            <td>{product.precio}</td>
-            <td>{product.cantidadStock}</td>
+            <td style={{whiteSpace: 'nowrap'}} class="align-middle">{product.nombre}</td>
+            <td class="align-middle">{product.categoria}</td>
+            <td class="align-middle">{product.descripcion}</td>
+            <td class="align-middle">{product.disponibilidad ? 'Si' : 'No'}</td>
+            <td class="align-middle">{product.precio}</td>
+            <td class="align-middle">{product.cantidadStock}</td>
             <td class="align-middle"><img src={product.url} width="80%" height="40%" ></img></td>
         </tr>
     });
