@@ -15,7 +15,6 @@ const ProductCatalog = () => {
 
     useEffect(() =>{
         setLoading(true);
-        //consultar por precio menor
 
         fetch(`/api/Productos/all`)
             //fetch(`/api/Productos/search/Wilson`)
@@ -29,7 +28,6 @@ const ProductCatalog = () => {
     const handleClick= () =>{
 
         setLoading(true);
-        //consultar por precio menor
 
             fetch(`/api/Productos/${filterBy}/${data}`)
                 .then(response => {
@@ -95,13 +93,14 @@ const ProductCatalog = () => {
         let categorias = [];
         productos.map(producto => {
             categorias.push(producto.categoria);
-        })
+        });
+        let categoriasSet = [...new Set(categorias)];
         if (filterBy === 'category') {
             return (
                 <select name="value" className="form-select" aria-label="Default select example"
                         onChange={handleChangeData}>
                     <option selected>Seleccionar categoría</option>
-                    {categorias.map(categoria => {
+                    {categoriasSet.map(categoria => {
                         return <option value={categoria}>{categoria}</option>
                     })}
                 </select>
