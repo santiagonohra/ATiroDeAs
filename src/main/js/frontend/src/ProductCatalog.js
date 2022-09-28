@@ -71,6 +71,7 @@ const ProductCatalog = () => {
             <td>{product.disponibilidad ? 'Si' : 'No'}</td>
             <td>{product.precio}</td>
             <td>{product.cantidadStock}</td>
+            <td class="align-middle"><img src={product.url} width="80%" height="40%" ></img></td>
         </tr>
     });
 
@@ -103,6 +104,7 @@ const ProductCatalog = () => {
                         <th width="5%">Disponible</th>
                         <th width="5%">Precio</th>
                         <th width="5%">Stock</th>
+                        <th width="10%">Imágen</th>
                     </tr>
                     </thead>
                     <tbody>
