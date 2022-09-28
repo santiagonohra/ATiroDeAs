@@ -8,7 +8,7 @@ public class Producto {
     @Id
     private String id;
 
-    private String nombre, categoria, descripcion;
+    private String nombre, categoria, descripcion, url;
     private Integer precio, cantidadStock;
     private boolean disponibilidad;
 
@@ -16,12 +16,13 @@ public class Producto {
 
     }
 
-    public Producto(String id, String nombre, String categoria, String descripcion, Integer precio, Integer cantidadStock, boolean disponibilidad) {
+    public Producto(String id, String nombre, String categoria, String descripcion, String url, Integer precio, Integer cantidadStock, boolean disponibilidad) {
         super();
         this.id = id;
         this.nombre = nombre;
         this.categoria = categoria;
         this.descripcion = descripcion;
+        this.url = url;
         this.precio = precio;
         this.cantidadStock = cantidadStock;
         this.disponibilidad = disponibilidad;
@@ -81,5 +82,13 @@ public class Producto {
 
     public void setDisponibilidad(boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
+    }
+    
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
