@@ -72,10 +72,11 @@ const ProductoEdit = () => {
                 </FormGroup>
                 <FormGroup>
                     <Label for="disponibilidad">Disponible</Label>
-                    <Input type="text" name="disponibilidad" id="disponibilidad" defaultValue={producto.disponibilidad ? 'Si' : '' || ''} onChange={handleChange} autoComplete="disponibilidad"/>
+                    <input class="form-check-input" type="radio" value="Si" name="disponibilidad" id="disponibilidad" onChange={handleChange} /> Sí &ensp; &ensp;
+                    <input class="form-check-input" type="radio" value="No" name="disponibilidad" id="disponibilidad" onChange={handleChange} /> No &ensp; &ensp;                    
                 </FormGroup>
                 <FormGroup>
-                    <Label for="precio">Prezio :3</Label>
+                    <Label for="precio">Precio</Label>
                     <Input type="number" name="precio" id="precio" defaultValue={producto.precio || ''} onChange={handleChange} autoComplete="precio"/>
                 </FormGroup>
                 <FormGroup>
