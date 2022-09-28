@@ -85,9 +85,9 @@ const ProductCatalog = () => {
                 <Button color="link"><Link to="/">Regresar</Link></Button>
                 <h4>Opciones</h4>
 
-                    <input type="radio" value="ltPrice" name="choice" onChange={handleChangeFilter} /> Consultar por menor precio &ensp; &ensp;
-                    <input type="radio" value="category" name="choice" onChange={handleChangeFilter} /> Consultar por categoría &ensp; &ensp;
-                    <input type="radio" value="search" name="choice" onChange={handleChangeFilter} /> Consultar por nombre &ensp; &ensp; &ensp; &ensp;
+                    <input class="form-check-input" type="radio" value="ltPrice" name="choice" onChange={handleChangeFilter} /> Consultar por menor precio &ensp; &ensp;
+                    <input class="form-check-input" type="radio" value="category" name="choice" onChange={handleChangeFilter} /> Consultar por categoría &ensp; &ensp;
+                    <input class="form-check-input" type="radio" value="search" name="choice" onChange={handleChangeFilter} /> Consultar por nombre &ensp; &ensp; &ensp; &ensp;
                     <div className="float-end">
                     <input type={paramType} name="value" placeholder="Parámetro de búsqueda" onChange={handleChangeData}/>&ensp;
                     <Button color="primary" disabled={data.length == 0 || filterBy.length == 0} onClick={handleClick}>Aceptar</Button>&ensp;
