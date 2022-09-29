@@ -68,7 +68,6 @@ const ProductCatalog = () => {
         //consultar por precio menor
 
         fetch(`/api/Productos/available`)
-            //fetch(`/api/Productos/search/Wilson`)
             .then(response => response.json())
             .then(data => {
                 setProductos(data);
