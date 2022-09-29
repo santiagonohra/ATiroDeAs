@@ -16,7 +16,7 @@ const ProductCatalog = () => {
     useEffect(() =>{
         setLoading(true);
 
-        fetch(`/api/Productos/all`)
+        fetch(`/api/Productos/available`)
             //fetch(`/api/Productos/search/Wilson`)
             .then(response => response.json())
             .then(data => {
@@ -67,7 +67,7 @@ const ProductCatalog = () => {
         setLoading(true);
         //consultar por precio menor
 
-        fetch(`/api/Productos/all`)
+        fetch(`/api/Productos/available`)
             //fetch(`/api/Productos/search/Wilson`)
             .then(response => response.json())
             .then(data => {
