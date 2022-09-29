@@ -77,7 +77,7 @@ const ProductoEdit = () => {
                 </FormGroup>
                 <FormGroup>
                     <Label for="precio">Precio</Label>
-                    <Input type="number" name="precio" id="precio" defaultValue={producto.precio || ''} onChange={handleChange} autoComplete="precio" placeholder="$120000..."/>
+                    <Input type="number" name="precio" id="precio" defaultValue={producto.precio || ''} onChange={handleChange} autoComplete="precio" placeholder="120000..."/>
                 </FormGroup>
                 <FormGroup>
                     <Label for="cantidadStock">Cantidad En Stock</Label>
