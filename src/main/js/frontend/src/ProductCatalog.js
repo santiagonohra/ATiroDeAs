@@ -73,13 +73,13 @@ const ProductCatalog = () => {
 
     const productList = productos.map(product =>{
         return <tr key={product.id}>
-            <td style={{whiteSpace: 'nowrap'}} class="align-middle">{product.nombre}</td>
-            <td class="align-middle">{product.categoria}</td>
-            <td class="align-middle">{product.descripcion}</td>
-            <td class="align-middle">{product.disponibilidad ? 'Si' : 'No'}</td>
-            <td class="align-middle">{product.precio}</td>
-            <td class="align-middle">{product.cantidadStock}</td>
-            <td class="text-center"><img src={product.url} width="80%" height="40%" alt="Imágen no Encontrada" ></img></td>
+            <td style={{whiteSpace: 'nowrap'}} className="align-middle">{product.nombre}</td>
+            <td className="align-middle">{product.categoria}</td>
+            <td className="align-middle">{product.descripcion}</td>
+            <td className="align-middle">{product.disponibilidad ? 'Si' : 'No'}</td>
+            <td className="align-middle">{product.precio}</td>
+            <td className="align-middle">{product.cantidadStock}</td>
+            <td className="text-center"><img src={product.url} width="80%" height="40%" alt="Imágen no Encontrada" ></img></td>
         </tr>
     });
 
@@ -118,9 +118,9 @@ const ProductCatalog = () => {
                 <Button color="link"><Link to="/">Regresar</Link></Button>
                 <h4>Opciones</h4>
 
-                    <input class="form-check-input" type="radio" value="ltPrice" name="choice" onChange={handleChangeFilter} /> Consultar por menor precio &ensp; &ensp;
-                    <input class="form-check-input" type="radio" value="category" name="choice" onChange={handleChangeFilter} /> Consultar por categoría &ensp; &ensp;
-                    <input class="form-check-input" type="radio" value="search" name="choice" onChange={handleChangeFilter} /> Consultar por nombre &ensp; &ensp; &ensp; &ensp;
+                    <input className="form-check-input" type="radio" value="ltPrice" name="choice" onChange={handleChangeFilter} /> Consultar por menor precio &ensp; &ensp;
+                    <input className="form-check-input" type="radio" value="category" name="choice" onChange={handleChangeFilter} /> Consultar por categoría &ensp; &ensp;
+                    <input className="form-check-input" type="radio" value="search" name="choice" onChange={handleChangeFilter} /> Consultar por nombre &ensp; &ensp; &ensp; &ensp;
                     <div className="float-end">
                         <InputGroup>
                             {searchParam()}

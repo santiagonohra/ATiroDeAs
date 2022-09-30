@@ -31,14 +31,14 @@ const ProductoEdit = () => {
     }
 
     const isClickable = () => {
-        return (producto.nombre.length == 0 || producto.categoria.length == 0 ||
-            producto.descripcion.length == 0 || producto.disponibilidad.length == 0 ||
-            producto.precio.length == 0 || producto.cantidadStock.length == 0);
+        return (producto.nombre.length === 0 || producto.categoria.length === 0 ||
+            producto.descripcion.length === 0 || producto.disponibilidad.length === 0 ||
+            producto.precio.length === 0 || producto.cantidadStock.length === 0);
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        producto.disponibilidad = producto.disponibilidad == 'No' ? 'false' : 'true';
+        producto.disponibilidad = producto.disponibilidad === 'No' ? 'false' : 'true';
         await fetch('/api/Productos' + (producto.id ? '/' + producto.id : '/save'), {
             method: (producto.id) ? 'PUT' : 'POST',
             headers: {
@@ -95,7 +95,6 @@ const ProductoEdit = () => {
             </Form>
         </Container>
     </div>);
-
 };
 
 export default ProductoEdit;
