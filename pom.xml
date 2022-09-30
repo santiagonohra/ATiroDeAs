@@ -45,71 +45,7 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.1.0</version>
             </plugin>
-
-            <!--React plugins-->
-
-            <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.12.1</version>
-                <configuration>
-                    <workingDirectory>src/main/js/frontend</workingDirectory>
-                    <installDirectory>target</installDirectory>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>install node and npm</id>
-                        <goals>
-                            <goal>install-node-and-npm</goal>
-                        </goals>
-                        <configuration>
-                            <nodeVersion>v8.9.4</nodeVersion>
-                            <npmVersion>5.6.0</npmVersion>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>npm install</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>install</arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>npm run build</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>run build</arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>Copy JS app intro spring boot</id>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>target/classes/static</outputDirectory>
-                            <resources>
-                                <resource>src/main/js/frontend/build</resource>
-                                <filtering>true</filtering>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-
-        </plugins>
+       </plugins>
     </build>
 
 </project>

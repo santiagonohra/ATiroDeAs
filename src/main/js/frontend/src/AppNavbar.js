@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import logo from './images.png';
-import github from './github.jpeg';
 
 const AppNavbar = () => {
 

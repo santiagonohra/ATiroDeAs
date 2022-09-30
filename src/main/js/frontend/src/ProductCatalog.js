@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import {Button, Container, Input, Table, InputGroup} from 'reactstrap';
 import AppNavbar from './AppNavbar';
 import { Link } from 'react-router-dom';
-import {click} from "@testing-library/user-event/dist/click";
 
 const ProductCatalog = () => {
 
@@ -11,13 +10,11 @@ const ProductCatalog = () => {
     const [data, setData] = useState('');
     const [loading, setLoading] = useState(false);
     const [paramType, setParamType] = useState('');
-    const [categorias1, setCategorias1] = useState([]);
 
     useEffect(() =>{
         setLoading(true);
 
         fetch(`/api/Productos/available`)
-            //fetch(`/api/Productos/search/Wilson`)
             .then(response => response.json())
             .then(data => {
                 setProductos(data);
@@ -53,19 +50,18 @@ const ProductCatalog = () => {
 
 
     const handleChangeFilter = (event) =>{
-        const {name, value} = event.target;
+        const {value} = event.target;
         setFilterBy(value);
         setParamType(value === 'search' ? 'text' : 'number');
     }
 
     const handleChangeData = (event) => {
-        const {name, value} = event.target;
+        const {value} = event.target;
         setData(value);
     }
 
     const handleClickAll = () => {
         setLoading(true);
-        //consultar por precio menor
 
         fetch(`/api/Productos/available`)
             .then(response => response.json())
@@ -83,7 +79,7 @@ const ProductCatalog = () => {
             <td class="align-middle">{product.disponibilidad ? 'Si' : 'No'}</td>
             <td class="align-middle">{product.precio}</td>
             <td class="align-middle">{product.cantidadStock}</td>
-            <td class="text-center"><img src={product.url} width="80%" height="40%" ></img></td>
+            <td class="text-center"><img src={product.url} width="80%" height="40%" alt="Imágen no Encontrada" ></img></td>
         </tr>
     });
 
@@ -128,7 +124,7 @@ const ProductCatalog = () => {
                     <div className="float-end">
                         <InputGroup>
                             {searchParam()}
-                        <Button color="primary" disabled={data.length == 0 || filterBy.length == 0} onClick={handleClick}>Aceptar</Button>&ensp;
+                        <Button color="primary" disabled={data.length === 0 || filterBy.length === 0} onClick={handleClick}>Aceptar</Button>&ensp;
                         <Button color="success" onClick={handleClickAll}>Mostrar Todo</Button>
                         </InputGroup>
                     </div>
