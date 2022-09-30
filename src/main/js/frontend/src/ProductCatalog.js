@@ -83,7 +83,7 @@ const ProductCatalog = () => {
             <td class="align-middle">{product.disponibilidad ? 'Si' : 'No'}</td>
             <td class="align-middle">{product.precio}</td>
             <td class="align-middle">{product.cantidadStock}</td>
-            <td class="align-middle"><img src={product.url} width="80%" height="40%" ></img></td>
+            <td class="text-center"><img src={product.url} width="80%" height="40%" ></img></td>
         </tr>
     });
 
@@ -132,17 +132,19 @@ const ProductCatalog = () => {
                         <Button color="success" onClick={handleClickAll}>Mostrar Todo</Button>
                         </InputGroup>
                     </div>
-
-                <Table className="mt-4">
+                <br></br>
+                <br></br>
+                <h5 className="float-end">Mostrando {productos.length} resultados</h5>
+                <Table className="table table-bordered mt-4">
                     <thead>
                     <tr>
-                        <th width="10%">Nombre</th>
-                        <th width="5%">Categoría</th>
-                        <th width="20%">Descripción</th>
-                        <th width="5%">Disponible</th>
-                        <th width="5%">Precio</th>
-                        <th width="5%">Stock</th>
-                        <th width="10%">Imágen</th>
+                        <th className="text-center" width="8%">Nombre</th>
+                        <th className="text-center" width="8%">Categoría</th>
+                        <th className="text-center" width="20%">Descripción</th>
+                        <th className="text-center" width="5%">Disponible</th>
+                        <th className="text-center" width="5%">Precio</th>
+                        <th className="text-center" width="5%">Stock</th>
+                        <th className="text-center" width="10%">Imágen</th>
                     </tr>
                     </thead>
                     <tbody>

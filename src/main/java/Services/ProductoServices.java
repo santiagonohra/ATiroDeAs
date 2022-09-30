@@ -1,12 +1,11 @@
 package Services;
 
 import Model.Producto;
-import com.example.certificacionciclo4a.ProductoRepository;
+import Repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -26,7 +25,7 @@ public class ProductoServices {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    public ResponseEntity<?> getProductosMenorPrecio(int precio){
+    public ResponseEntity<?> getProductosMenorPrecio(double precio){
         Optional<List<Producto>> lista = productoRepository.consultarPorMenorPrecio(precio);
         return lista.map(response -> ResponseEntity.ok().body(response))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -58,7 +57,7 @@ public class ProductoServices {
         return null;
     }
 
-    public void deleteProducto(@RequestParam String id){
+    public void deleteProducto(String id){
         productoRepository.deleteById(id);
     }
 }

@@ -9,14 +9,16 @@ public class Producto {
     private String id;
 
     private String nombre, categoria, descripcion, url;
-    private Integer precio, cantidadStock;
+    private Integer cantidadStock;
+
+    private Double precio;
     private boolean disponibilidad;
 
     public Producto(){
 
     }
 
-    public Producto(String id, String nombre, String categoria, String descripcion, String url, Integer precio, Integer cantidadStock, boolean disponibilidad) {
+    public Producto(String id, String nombre, String categoria, String descripcion, String url, Double precio, Integer cantidadStock, boolean disponibilidad) {
         super();
         this.id = id;
         this.nombre = nombre;
@@ -60,11 +62,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public Integer getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Integer precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 

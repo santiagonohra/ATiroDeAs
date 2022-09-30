@@ -67,17 +67,17 @@ const ProductList = () => {
                     <Button color="success"  tag={Link} to="/Productos/new">Agregar Producto</Button>
                 </div>
                 <Button color="link"><Link to="/">Regresar</Link></Button>
-                <Table className="mt-4">
+                <Table className="table table-bordered mt-4">
                     <thead>
                     <tr>
-                        <th width="5%">Editar</th>
-                        <th width="5%">Eliminar</th>
-                        <th width="10%">Nombre</th>
-                        <th width="5%">Categoría</th>
-                        <th width="20%">Descripción</th>
-                        <th width="5%">Disponible</th>
-                        <th width="5%">Precio</th>
-                        <th width="5%">Stock</th>
+                        <th className="text-center" width="2%">Editar</th>
+                        <th className="text-center" width="2%">Eliminar</th>
+                        <th className="text-center" width="8%">Nombre</th>
+                        <th className="text-center" width="8%">Categoría</th>
+                        <th className="text-center" width="22%">Descripción</th>
+                        <th className="text-center" width="3%">Disponible</th>
+                        <th className="text-center" width="5%">Precio</th>
+                        <th className="text-center" width="5%">Stock</th>
                     </tr>
                     </thead>
                     <tbody>
